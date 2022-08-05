@@ -75,6 +75,10 @@ app.get('/', function (req, res) {
     res.send('<h1>Hello World!</h1>');
   });
 
+  app.get('/greeting/:name', function (req, res) {
+    res.send('Hello ' + req.params.name + '!');
+  });
+
 // -----> Listen on port defined in .env
 app.listen(port, function() {
  console.log('Listening on port 3000');
