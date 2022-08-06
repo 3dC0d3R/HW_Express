@@ -39,6 +39,7 @@
 
 // -----> Require modules 
 require('dotenv').config() // Link .env file
+const { randomInt } = require('crypto');
 const express = require('express') // Load express
 const fs = require('fs') // this engine requires the fs module 
 const variable = require('./models/File_Name.js') // Imports value of module.exports
@@ -88,6 +89,24 @@ app.set('views', './views') // specify the views directory
       `
     )
   });
+
+  // Magic 8 Ball 
+  app.get('/magic/:question', function (req, res) {
+    const random8 = ["It is certain", "It is decidedly so", "Without a doubt", "Yes definitely","You may rely on it", "As I see it yes", "Most likely", "Outlook good","Yes", "Signs point to yes", "Reply hazy try again", "Ask again later","Better not tell you now", "Cannot predict now", "Concentrate and ask again","Don't count on it", "My reply is no", "My sources say no","Outlook not so good", "Very doubtful"]
+    
+  let guess = random8[Math.floor(Math.random() * random8.length)]
+
+  if (req.params.question == 'Will I Be A Millionaire') {
+    res.send(
+      `
+        ${req.params.question}? <br> ${guess}
+      `
+    )
+  } else {
+      res.send("Try again bud...")
+  }
+    
+  });  
 
 // -----> Listen on port defined in .env
 app.listen(port, function() {
