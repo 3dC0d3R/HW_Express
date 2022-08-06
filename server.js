@@ -70,13 +70,23 @@ app.set('views', './views') // specify the views directory
 
 
 // -----> Mount routes
-    // Define a "root" route directly on app
-app.get('/', function (req, res) {
+  // Define a "root" route directly on app
+  app.get('/', function (req, res) {
     res.send('<h1>Hello World!</h1>');
   });
 
+  // Greetings
   app.get('/greeting/:name', function (req, res) {
     res.send('Hello ' + req.params.name + '!');
+  });
+
+  // Tip Calculator
+  app.get('/tip/:total/:tipPercentage', function (req, res) {
+    res.send(
+      `
+        ${req.params.total * (req.params.tipPercentage/100)}
+      `
+    )
   });
 
 // -----> Listen on port defined in .env
