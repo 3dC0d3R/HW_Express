@@ -30,12 +30,10 @@
 5. git remote add origin git@g3dC0d3R/m2w1d3_First_Express_HW.git# // Sets the new remote
 6. git remote -v // Verifies the new remote URL
 6. git push -u -f origin main //# Pushes the changes in your local repository up to the remote repository you specified as the origin. The -f (or --force) flag stands for force. This will automatically overwrite everything in the remote directory.
-
 */
 
 /* The following code belongs in server.js
     -------------------------------------  */
-
 
 // -----> Require modules 
 require('dotenv').config() // Link .env file
@@ -47,28 +45,14 @@ const variable = require('./models/File_Name.js') // Imports value of module.exp
 // -----> Create the Express app
 const app = express(); //app is an object. 
 
-
 // -----> Declare environment variables. 
 const port = process.env.PORT // Links PORT variable from .env file. 
 
 // -----> Create views engine
-/* app.engine('hypatia', (filePath, options, callback) => { // define the view engine called hypatia
-  fs.readFile(filePath, (err, content) => {
-    if (err) return callback(err)
-  
-    const rendered = content.toString()
-      .replace('#title#', '<title>' + options.title + '</title>')
-      .replace('#message#', '<h1>' + options.message + '</h1>').replace('#content#','<div>'+ options.content + '</div>' )
-    return callback(null, rendered)
-  })
-}) */
 
 // -----> Configure the app (app.set)
-app.set('views', './views') // specify the views directory
-//app.set('view engine', 'hypatia') // register the hypatia view engine
 
 // -----> Mount middleware (app.use)
-
 
 // -----> Mount routes
 
@@ -86,7 +70,6 @@ app.set('views', './views') // specify the views directory
     } else {
       res.send(`<h1> ${count} Bottles of beer on the wall</h1> <br> <a href="/">Home </a> `);
     }
-    
   });
 
   // Greetings
