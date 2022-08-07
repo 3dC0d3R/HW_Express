@@ -72,8 +72,20 @@ app.set('views', './views') // specify the views directory
 
 // -----> Mount routes
   // Define a "root" route directly on app
+  let count = 99
   app.get('/', function (req, res) {
-    res.send('<h1>Hello World!</h1>');
+    count = 99
+    res.send(`<h1> 99 Bottles of beer on the wall</h1> <br> <a href="${count}">link take one down, pass it around</a> `);
+  });
+
+  app.get('/:number_of_bottles', function (req, res) {
+    count--
+    if (count != 0) {
+      res.send(`<h1> ${count+1} Bottles of beer on the wall</h1> <br> <a href="${count}">take one down, pass it around </a> `);
+    } else {
+      res.send(`<h1> ${count} Bottles of beer on the wall</h1> <br> <a href="/">Home </a> `);
+    }
+    
   });
 
   // Greetings
